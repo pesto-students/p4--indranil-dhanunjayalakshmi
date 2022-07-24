@@ -33,15 +33,16 @@
 
     The main responsibility of a parser is to translate content from one form to another. The general flow of a parser is as follows:
 
-        1. Translating the content into lexicals(lexical analysis)
-        2. Validating the correctness(syntactical analysis)
-        3. Generating the parse tree
+    1. Translating the content into lexicals(lexical analysis)
+    2. Validating the correctness(syntactical analysis)
+    3. Generating the parse tree
+    <br/><br/>
 
     In a browser we have multiple parsers with their dedicated responsibilities like HTML parser, CSS parser, script parser.
 
     HTML parser:
 
-        The job of the HTML parser is to parse the HTML markup and build the DOM tree.
+    The job of the HTML parser is to parse the HTML markup and build the DOM tree.
 
     HTML parsing flow
     <br/><br/>
@@ -52,7 +53,7 @@
 
    CSS parser:
 
-        The job of the CSS parser is to parse the stylesheets and creating the CSSOM tree.
+    The job of the CSS parser is to parse the stylesheets and creating the CSSOM tree.
 
     <br/>
 
@@ -72,9 +73,9 @@
 
 1. Tree construction
 
-        The Render tree is of visual elements in the order in which they will be displayed. It is the visual representation of the document. The purpose of the tree is to enable painting the contents in their correct order.
+    The Render tree is of visual elements in the order in which they will be displayed. It is the visual representation of the document. The purpose of the tree is to enable painting the contents in their correct order.
 
-        The DOM and CSSOM are combined to form the render tree.
+    The DOM and CSSOM are combined to form the render tree.
 
     To construct the render tree the browser does the following:
 
@@ -92,9 +93,9 @@
 
     Layout:
 
-        When the render tree is created, it doesn't have a position and size. Calculating these values is called layout or reflow. To figure out the exact size and position of each object on the page, the browser begins at the root of the render tree and traverses it. The output of the layout process is a "box model," which precisely captures the exact position and size of each element within the viewport.
+    When the render tree is created, it doesn't have a position and size. Calculating these values is called layout or reflow. To figure out the exact size and position of each object on the page, the browser begins at the root of the render tree and traverses it. The output of the layout process is a "box model," which precisely captures the exact position and size of each element within the viewport.
 
     Painting:
 
-        Painting or rasterizing is the process of converting each ode in the render tree to actual pixels on the screen. After layout the browser calls the renderer'd paint() method to display content on screen. Painting uses the UI infrastructure component. 
+    Painting or rasterizing is the process of converting each ode in the render tree to actual pixels on the screen. After layout the browser calls the renderer'd paint() method to display content on screen. Painting uses the UI infrastructure component. 
 
