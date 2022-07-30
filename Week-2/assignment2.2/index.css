@@ -21,6 +21,14 @@ body {
     width: 250px;
     height: 250px;
     background-color: red;
+    transition: transform 1s ease;
+    transform-origin: top left;
+    transform: rotate(0deg);
+}
+
+.mesg:hover .red {
+    transform-origin: top left;
+    transform: rotate(90deg);
 }
 
 .yellow {
@@ -30,6 +38,14 @@ body {
     width: 250px;
     height: 250px;
     background-color: yellow;
+    transition: transform 1s ease;
+    transform-origin: top right;
+    transform: rotate(0deg);
+}
+
+.mesg:hover .yellow {
+    transform-origin: top right;
+    transform: rotate(-90deg);
 }
 
 .blue {
@@ -39,6 +55,14 @@ body {
     width: 250px;
     height: 250px;
     background-color: blue;
+    transition: transform 1s ease;
+    transform-origin: bottom left;
+    transform: rotate(0deg);
+}
+
+.mesg:hover .blue {
+    transform-origin: bottom left;
+    transform: rotate(-90deg);
 }
 
 .green {
@@ -48,4 +72,12 @@ body {
     width: 250px;
     height: 250px;
     background-color: green;
+    transition: transform 1s ease;
+    transform-origin: bottom right;
+    transform: rotate(0deg);
+}
+
+.mesg:hover .green {
+    transform-origin: bottom right;
+    transform: rotate(90deg);
 }
