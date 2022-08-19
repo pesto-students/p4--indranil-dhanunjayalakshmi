@@ -4,15 +4,19 @@ const STATE = {
     REJECTED: 'REJECTED',
   }
   
+  function isThenable(val) {
+    return val instanceof MyPromise;
+  }
+  
   class MyPromise {
     constructor(callback) {
-      //Initial state of promise is empty
       this.state = STATE.PENDING;
       this.value = undefined;
       this.handlers = [];
       try {
         callback(this._resolve, this._reject)
-      } catch (err) {
+      }
+      catch (err) {
         this._reject(err);
       }
     }
@@ -20,7 +24,7 @@ const STATE = {
     _resolve = (value) => {
       this.updateResult(value, STATE.FULFILLED);
     }
-    _reject  = (error) => {
+    _reject = (error) => {
       this.updateResult(error, STATE.REJECTED);
     }
   
@@ -38,12 +42,60 @@ const STATE = {
         this.state = state;
   
         this.executeHandlers();
-        
+  
       }, 0);
     }
   
-    then(onSuccess, onFail) {}
-    catch(onFail) {}
-    finally(callback) {}
+    addHandlers(handlers) {
+      this.handlers.push(handlers);
+      this.executeHandlers();
+    }
+  
+    executeHandlers() {
+      if (this.state === STATE.PENDING) {
+        return null;
+      }
+  
+      this.handlers.forEach((handler) => {
+        if (this.state === STATE.FULFILLED) {
+          return handler.onSuccess(this.value);
+        }
+        return handler.onFail(this.value);
+      });
+  
+      this.handlers = [];
+    }
+  
+    then(onSuccess, onFail) {
+      return new MyPromise((res, rej) => {
+        this.addHandlers({
+          onSuccess: function(value) {
+            if (!onSuccess) {
+              return res(value);
+            }
+            try {
+              return res(onSuccess(value));
+            }
+            catch(err) {
+              return rej(err);
+            }
+          },
+          onFail: function(value) {
+            if (!onFail) {
+              return rej(value);
+            }
+            try {
+              return res(onFail(value));
+            }
+            catch(err) {
+              return rej(err);
+            }
+          }
+        });
+      });
+    }
+  
+    catch (onFail) {}
+    finally (callback) {}
   }
   
