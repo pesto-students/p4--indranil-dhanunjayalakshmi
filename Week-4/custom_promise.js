@@ -95,7 +95,29 @@ const STATE = {
       });
     }
   
-    catch (onFail) {}
-    finally (callback) {}
+    catch(onFail) {
+      return this.then(null, onFail);
+    }
+    finally(callback) {
+      return new MyPromise((res, rej) => {
+        let val;
+        let wasRejected;
+        this.then((value) => {
+          wasRejected = false;
+          val = value;
+          return callback();
+        },
+        (err) => {
+          wasRejected = true;
+          val = err;
+          return callback();
+        }).then(() => {
+          if(!wasRejected) {
+            return res(val);
+          }
+          return rej(val);
+        })
+      })
+    }
   }
   
