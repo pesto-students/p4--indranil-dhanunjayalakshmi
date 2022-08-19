@@ -17,8 +17,30 @@ const STATE = {
       }
     }
   
-    _resolve = (value) => {}
-    _reject  = (error) => {}
+    _resolve = (value) => {
+      this.updateResult(value, STATE.FULFILLED);
+    }
+    _reject  = (error) => {
+      this.updateResult(error, STATE.REJECTED);
+    }
+  
+    updateResult(value, state) {
+      setTimeout(() => {
+        if (this.state !== STATE.PENDING) {
+          return;
+        }
+  
+        if(isThenable(value)) {
+          return value.then(this._resolve, this._reject);
+        }
+  
+        this.value = value;
+        this.state = state;
+  
+        this.executeHandlers();
+        
+      }, 0);
+    }
   
     then(onSuccess, onFail) {}
     catch(onFail) {}
