@@ -42,7 +42,6 @@ const STATE = {
         this.state = state;
   
         this.executeHandlers();
-  
       }, 0);
     }
   
@@ -98,6 +97,7 @@ const STATE = {
     catch(onFail) {
       return this.then(null, onFail);
     }
+
     finally(callback) {
       return new MyPromise((res, rej) => {
         let val;
@@ -119,5 +119,25 @@ const STATE = {
         })
       })
     }
-  }
+}
+
+function getNumber() {
+  return new MyPromise(function(resolve, reject) {
+    let x = Math.floor((Math.random() * 100) + 1);
+    if (x%5 == 0) {
+      reject(new Error(`${x} is divisible by 5`));
+    }
+    resolve(x);
+  });
+}
+
+const promise = getNumber();
+
+promise.then((value) => {
+   console.log(`Resolved: ${value} is not divisible by 5`)
+}).catch(error => {
+  console.log(`Rejected: ${error.message}`);
+}).finally(() => {
+  console.log("Finally: Task completed")
+})
   
