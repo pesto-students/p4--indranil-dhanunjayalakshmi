@@ -19,3 +19,16 @@ function createSLL(arr)
   }
   return head;
 }
+
+function traverseSLL(head)
+{
+  let curr = head;
+  while(curr != null)
+  {
+    console.log(curr.value);
+    curr = curr.next;
+  }
+}
+
+let head = createSLL([1,2,3,4,5,6,7,8,9,10]);
+traverseSLL(head);
