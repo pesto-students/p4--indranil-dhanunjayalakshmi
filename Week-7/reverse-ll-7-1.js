@@ -40,7 +40,7 @@ function reverseList(head)
     prev = curr;
     curr =  after;
   }
-  curr.next =  prev;
+  curr.next = prev;
   head = curr;
   return head;
 }
