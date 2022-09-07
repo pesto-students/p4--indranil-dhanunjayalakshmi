@@ -41,6 +41,7 @@ function traverseSLL(head)
 /**
  * 
  * @param {*} head 
+ * @param {*} n 
  * @param {*} k 
  * @returns 
  */
