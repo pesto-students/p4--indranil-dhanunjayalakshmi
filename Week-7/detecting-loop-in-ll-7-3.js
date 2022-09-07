@@ -41,23 +41,27 @@ function traverseSLL(head)
 /**
  * 
  * @param {*} head 
+ * @param {*} k 
  * @returns 
  */
-function reverseList(head)
+function createLoop(head, k)
 {
-  let prev = null, curr = head, after = null;
-  while(curr.next !== null)
+  let pivot = head;
+
+  while(--k)
   {
-    after = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr =  after;
+    pivot = pivot.next;
   }
-  curr.next = prev;
-  head = curr;
+
+  let tail = pivot;
+  while(tail.next !== null)
+  {
+    tail = tail.next;
+  }
+  tail.next = pivot;
   return head;
 }
 
 let head = createSLL([1,2,3,4,5,6,7,8,9,10]);
-head = reverseList(head);
+head = createLoop(head, 4);
 traverseSLL(head);
