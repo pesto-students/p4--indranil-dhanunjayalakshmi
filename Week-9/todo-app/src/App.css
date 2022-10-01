@@ -67,6 +67,11 @@ li {
   height: 20px;
 }
 
+.itemDelete {
+  float: right;
+  background-color: #3dbef7;
+}
+
 .footer {
   margin-top: 40px;
   background-color: #3dbef7;

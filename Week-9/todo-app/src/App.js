@@ -33,6 +33,12 @@ function App() {
     inputValue.current.value = "";
   }
 
+  function onItemDelete(item) {
+    let index = todoList.indexOf(item);
+    todoList.splice(index, 1);
+    setTodoList([...todoList]);
+  }
+
   return (
     <div className="App">
       <div className="heading">
@@ -62,6 +68,12 @@ function App() {
                   onClick={() => onItemClick(item)}
                 />
                 <span>{item.text}</span>
+                <button
+                  className="itemDelete"
+                  onClick={() => onItemDelete(item)}
+                >
+                  Delete
+                </button>
               </li>
             ))}
         </ul>
@@ -80,6 +92,12 @@ function App() {
                   onClick={() => onItemClick(item)}
                 />
                 <span>{item.text}</span>
+                <button
+                  className="itemDelete"
+                  onClick={() => onItemDelete(item)}
+                >
+                  Delete
+                </button>
               </li>
             ))}
         </ul>
