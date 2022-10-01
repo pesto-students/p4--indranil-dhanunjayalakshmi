@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { v4 } from "uuid";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function App() {
   const [todoList, setTodoList] = useState([
@@ -13,10 +13,24 @@ function App() {
     { id: v4(), text: "Cleaning my room", completed: false },
   ]);
 
+  const inputValue = useRef(null);
+
   function onItemClick(item) {
     let index = todoList.indexOf(item);
     todoList[index].completed = !todoList[index].completed;
     setTodoList([...todoList]);
+  }
+
+  function onItemAdd(e) {
+    e.preventDefault();
+    if (inputValue.current.value)
+      todoList.push({
+        id: v4(),
+        text: inputValue.current.value,
+        completed: false,
+      });
+    setTodoList([...todoList]);
+    inputValue.current.value = "";
   }
 
   return (
@@ -25,8 +39,13 @@ function App() {
         <h1>Todo App</h1>
       </div>
       <div className="inputBox">
-        <form className="inputForm" action="">
-          <input type="text" name="todoTask" placeholder="Add a task" />
+        <form className="inputForm" action="" onSubmit={onItemAdd}>
+          <input
+            type="text"
+            name="todoTask"
+            placeholder="Add a task"
+            ref={inputValue}
+          />
           <button type="submit">Add Task</button>
         </form>
       </div>
