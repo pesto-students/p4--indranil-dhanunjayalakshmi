@@ -1,3 +1,5 @@
+# ToDo app
+
 Clone this git repository
 
 Install the project dependencies using the command:
