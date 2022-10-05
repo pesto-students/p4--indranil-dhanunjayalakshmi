@@ -1,0 +1,80 @@
+.App {
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  width: 30%;
+  border: 5px solid black;
+  text-align: left;
+}
+
+.heading {
+  background-color: #3dbef7;
+}
+
+.heading h1 {
+  margin: 0;
+  padding: 10px;
+}
+
+.inputBox {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.inputForm {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.inputForm input {
+  padding: 10px;
+  flex-grow: 2;
+  margin-right: 10px;
+}
+
+.inputForm button {
+  flex-grow: 1;
+  padding: 10px;
+  background-color: #3dbef7;
+}
+
+.completedTasks { 
+  padding: 0 10px;
+  margin: 10px;
+}
+
+.todotasks { 
+  padding: 0 10px;
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0 10px;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.checkItem {
+  padding: 20px;
+  margin: 0 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.itemDelete {
+  float: right;
+  background-color: #3dbef7;
+}
+
+.footer {
+  margin-top: 40px;
+  background-color: #3dbef7;
+  text-align: center;
+  padding: 15px;
+}
