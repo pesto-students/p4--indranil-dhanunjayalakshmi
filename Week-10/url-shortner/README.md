@@ -6,4 +6,4 @@ Install the project dependencies using the command:
 Start the project using:
 `npm start`
 
-The ToDo app will be live on http://localhost:3000
+The URL shortener app will be live on http://localhost:3000
