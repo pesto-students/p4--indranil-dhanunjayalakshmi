@@ -1,0 +1,81 @@
+.Home-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Home-input-box {
+    margin: 40px auto;
+}
+
+.Home-input-form {
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+.Home-input-form input {
+    margin-right: 20px;
+    border-radius: 22px;
+    padding: 20px;
+    width: 400px;
+}
+
+.Home-input-form button {
+    margin-right: 20px;
+    border-radius: 22px;
+    padding: 10px;
+    width: 150px;
+    font-size: medium;
+    background-color: #2bcfce;
+}
+
+.Home-short-url {
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.Short-url-list {
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.Short-url-list td, .Short-url-list th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.Short-url-list tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.Short-url-list tr:hover {
+    background-color: #ddd;
+}
+
+.Short-url-list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.Short-url-list .Copy-button {
+    text-align: center;
+}
+
+.Copy-button button {
+    margin-right: 0;
+    border-radius: 22px;
+    padding: 10px;
+    width: 100px;
+    font-size: medium;
+    background-color: #2bcfce;
+    border: 1px solid black;
+}
+
+.Error-mesg {
+    color: red;
+    margin-top: 0;
+}
