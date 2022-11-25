@@ -41,4 +41,22 @@ app.get("/weather/forecast", function handler(req, res) {
   });
 });
 
+app.get("/weather/history", function handler(req, res) {
+  let city = req.query.city;
+
+  let ts = req.query.cnt;
+
+  let dt = req.query.dt;
+
+  let url = `https://history.openweathermap.org/data/2.5/history/city?q=${city}&units=metric&start=${dt}&cnt=${ts}&appid=${apiKey}`;
+
+  request(url, function (err, response, body) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(JSON.parse(body));
+    }
+  });
+});
+
 app.listen(8080);
