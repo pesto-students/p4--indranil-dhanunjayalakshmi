@@ -25,4 +25,20 @@ app.get("/weather/city", function handler(req, res) {
   });
 });
 
+app.get("/weather/forecast", function handler(req, res) {
+  let city = req.query.city;
+
+  let ts = req.query.cnt;
+
+  let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&cnt=${ts}&appid=${apiKey}`;
+
+  request(url, function (err, response, body) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(JSON.parse(body));
+    }
+  });
+});
+
 app.listen(8080);
